@@ -92,13 +92,13 @@ struct NavigationContainer: View {
         switch router.transitionDirection {
         case .forward:
             return .asymmetric(
-                insertion: .move(edge: .trailing),
-                removal: .move(edge: .leading)
+                insertion: .move(edge: .trailing).combined(with: .opacity.animation(.easeIn)),
+                removal: .move(edge: .leading).combined(with: .opacity.animation(.easeOut))
             )
         case .backward:
             return .asymmetric(
-                insertion: .move(edge: .leading),
-                removal: .move(edge: .trailing)
+                insertion: .move(edge: .leading).combined(with: .opacity.animation(.easeIn)),
+                removal: .move(edge: .trailing).combined(with: .opacity.animation(.easeOut))
             )
         case .modal, .none:
             return .identity
