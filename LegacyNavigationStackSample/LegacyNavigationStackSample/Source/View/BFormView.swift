@@ -63,7 +63,7 @@ struct BFormView: View {
             }
             
             Button(action: {
-                validateAndNavigate()
+                scanAndNavigate()
             }) {
                 if viewModel.isLoading {
                     ProgressView()
@@ -82,9 +82,9 @@ struct BFormView: View {
         .padding()
     }
     
-    private func validateAndNavigate() {
+    private func scanAndNavigate() {
         Task {
-            let result = await viewModel.validateFormB()
+            let result = await viewModel.scanFormB()
             
             await MainActor.run {
                 switch result {
